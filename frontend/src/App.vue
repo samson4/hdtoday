@@ -1,11 +1,13 @@
 <template>
   <v-app>
     <v-main>
-      <Header @toggleModal="toggleModal"/>
-      <HomeView />
+    <Header @toggleModal="toggleModal"/>
+    <router-link to="/"><i class="fa fa-play-circle"></i> Movies</router-link> ||
+    <router-link to="/TV-Shows"><i class="fa fa-list-ul"></i> TV Shows</router-link>
       <div v-if="showLogin">
         <Modal @closeModal="toggleModal" @logged="autenticated"/>
       </div>
+      <router-view/>
       <Footer  />
     </v-main>
   </v-app>
@@ -44,5 +46,8 @@ export default {
 
 </script>
 <style >
-
+.router-link-exact-active { 
+  background:#3e8afa;
+  color: white;
+}
 </style>

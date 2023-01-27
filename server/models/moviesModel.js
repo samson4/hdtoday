@@ -6,6 +6,10 @@ const movieSchema = mongoose.Schema(
             type:String,
             required :true
         },
+        Poster:{
+            type:String,
+            required:false
+        },
         Description:{
             type:String,
             default:""

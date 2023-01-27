@@ -1,5 +1,5 @@
 <template>
-  <v-container class="  ma-5 pa-5">
+  <v-container class="   ma-5 pa-5">
     <v-row>
   <v-card class="" max-width="344" :key="movie.Title" v-for="movie in movies">
     <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
@@ -13,8 +13,9 @@
     <v-card-subtitle right>{{ movie.Quality }}</v-card-subtitle>
 
     <v-card-actions>
+    <router-link :to="{name:'movie-detail' , params:{ slug: movie.alt}}">
       <v-btn><i class="fa fa-play"></i></v-btn>
-
+    </router-link>
      </v-card-actions>
 
   </v-card>

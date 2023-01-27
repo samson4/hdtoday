@@ -1,8 +1,5 @@
 <template>
   <nav class="my-5 mx-4">
-    <v-btn><router-link to="/"><i class="fa fa-play-circle"></i> Movies</router-link></v-btn>|
-    |<v-btn><router-link to="TV-Shows"><i class="fa fa-list-ul"></i> TV Shows</router-link></v-btn>
-    <router-link to="about">About</router-link>
     <Movie :movies="movies"/>
     <TV_Shows :tv_shows="tv_shows"/>
   </nav>

@@ -1,16 +1,22 @@
 <template>
-  <v-toolbar color="indigo" >
+  
+  <v-toolbar class="toolbar">
+    
       <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
       <v-spacer></v-spacer>
+      <v-div>
         <v-btn class="right" flat @click="toggleModal"><i left class="fa fa-user"></i></v-btn>
-      
+      </v-div>
+     <v-div>
       <v-form class="search-form "  action="">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input type="text" v-model="Search" color="text--white" placeholder="Enter Keywords...">
+      <input class="rounded-xl" type="text" v-model="Search"  placeholder="Enter Keywords...">
       </v-form>
+     </v-div>
     
-      
-  <v-navigation-drawer v-model="drawer" app color="black">
+  
+ 
+  <v-navigation-drawer v-model="drawer" app class="navigation">
     <v-btn @click="toggleSidebar" class="close-menu-btn info"><i class="fa fa-angle-left mr-2">Close menu</i></v-btn>
     <v-list v-for="catagory in Catagories" :key="catagory.catagory"  :href="catagory.route">
       <v-list-tile>
@@ -64,29 +70,14 @@ methods:{
 </script>
 
 <style scoped>
-  a{
-    color: azure;
-  }
-  /* v-toolbar{
-    color: #144184;
-  }
-    .search-form {
-    position: relative;
-    align-items: center;
-    background: white;
-    color: black;
-    margin-top: 45px;
-    margin-left: 12px;
-    margin-right: 12px;
-    border-radius: 2px;
-    width: 95%;
-    height: 100%;
-    }
-    .user-btn .fa-user{
-      float: right;
-    }
-    .close-menu-btn{
-    position: relative;
-    float: left;
-    } */
+ .toolbar{
+  background: #144184;
+  color: white;
+
+ } 
+
+ .navigation{
+  color: white;
+  background: black;
+ }
 </style>

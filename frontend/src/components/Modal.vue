@@ -55,6 +55,7 @@ export default {
         },
         onSubmit(e){
             e.preventDefault()
+            console.log("form submitted")
         
     },
 }
