@@ -40,35 +40,16 @@ export default {
   // props:['tv_shows'],
   data(){
     return{
-      tv_shows:[
-    {
-      Quality:"HD",
-      Seasons:1,
-      Title:"The Last of Us",
-      EPs:2,
-      Poster:'src/assets/the_last_of_us',
-      href:'/movie/watch-the-last-of-us-full-91342',
-      alt:"watch-the-last-of-us",
-    },
-    {
-      Quality:"HD",
-      Season:6,
-      Title:"Game of Thrones",
-      EPs:6,
-      Poster:'src/assets/game_of_thrones.jpg',
-      href:'/movie/game_of_thrones',
-      alt:"watch-game-of-thrones"
-    },
-    {
-      Quality:"HD",
-      Season:1,
-      Title:"House of the Dragon",
-      EPs:10,
-      Poster:'src/assets/house_of_the_dragon.jpg',
-      href:'/movie/house_of_the_dragon-full-91342',
-      alt:"watch-house-of-the-dragon"
+      tv_shows:[]
     }
-    ]
+  },
+  async mounted(){
+    try{
+    const data = await fetch('http://localhost:3000/tv_shows')
+    const tv_show = await data.json()
+    this.tv_shows = tv_show
+    }catch(error){
+      console.log(error)
     }
   }
 

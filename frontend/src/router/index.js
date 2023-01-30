@@ -3,6 +3,7 @@ import Home from '../views/HomeView.vue'
 import TV_Shows from '../views/TV_Shows.vue'
 import About from '../views/AboutView.vue'
 import movieDetail from '../views/movie/movieDetail.vue'
+import Notfound from '../views/404NotFound'
 
 const routes = [
   {
@@ -23,7 +24,17 @@ const routes = [
   {
     path:'/movie/:slug',
     name:'movie-detail',
-    component:movieDetail
+    component:movieDetail,
+    props:true
+  },
+  {
+    path:'/home',
+    redirect:'/'
+  },
+  {
+    path:"/:catchAll(.*)",
+    name:'404',
+    component:Notfound
   },
   // {
   //   path: '/about',
