@@ -1,7 +1,8 @@
 <template>
   <v-div>
   <v-breadcrumbs>Home{{ previous }}</v-breadcrumbs>
-    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"><v-card-title> {{slug}}</v-card-title></v-img>
+    <img  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg">
+    <v-card-title> {{slug}}</v-card-title>
   <h1></h1>
   <v-card>
     <v-card-title> {{slug}}</v-card-title>
@@ -11,12 +12,24 @@
   {{ name }}
   </v-div>
 
+
+  <div class="wrapper">
+    <nav class="navbar">
+        <div class="navbar-brand">
+          <p>hello</p>
+        </div>
+    </nav>
+  </div>
+  <div class="navbar-menu" id="navbar-menu">
+    <div class="navbar-end"></div>
+    
+  </div>
 </template>
 
 <script>
 export default {
   name:"movie-detail",
-  props:['slug','name'],
+  props:['slug'],
   data(){
     return{
       previous:this.$route.path
@@ -30,5 +43,9 @@ export default {
 </script>
 
 <style>
-
+img{
+  margin-top: -1.25rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
 </style>

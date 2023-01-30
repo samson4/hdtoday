@@ -1,19 +1,14 @@
 <template>
   
   <v-toolbar class="toolbar">
-    
+      
       <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
       <v-spacer></v-spacer>
       <v-div>
         <v-btn class="right" flat @click="toggleModal"><i left class="fa fa-user"></i></v-btn>
       </v-div>
-     <v-div>
-      <v-form class="search-form "  action="">
-      <i class="fa fa-search" aria-hidden="true"></i>
-      <input class="rounded-xl" type="text" v-model="Search"  placeholder="Enter Keywords...">
-      </v-form>
-     </v-div>
     
+   
   
  
   <v-navigation-drawer v-model="drawer" app class="navigation">

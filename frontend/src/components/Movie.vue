@@ -2,8 +2,9 @@
   <v-container class="   ma-5 pa-5">
     <v-row>
   <v-card class="" max-width="344" :key="movie.Title" v-for="movie in movies">
-    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
-
+  <router-link :to="{name:'movie-detail' , params:{ slug: movie.alt}}">
+    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"><i class="fa fa-play-circle center"></i></v-img>
+  </router-link>
     <v-card-title>{{ movie.Title }}</v-card-title>
    
 
@@ -12,11 +13,7 @@
 
     <v-card-subtitle right>{{ movie.Quality }}</v-card-subtitle>
 
-    <v-card-actions>
-    <router-link :to="{name:'movie-detail' , params:{ slug: movie.alt}}">
-      <v-btn><i class="fa fa-play"></i></v-btn>
-    </router-link>
-     </v-card-actions>
+   
 
   </v-card>
   

@@ -5,6 +5,7 @@
             <h3>Welcome Back<i class="fa fa-times-circle" @click="closeModal"></i></h3>
             
             <img src="/vue/hdtoday-clone/frontend/src/assets/logo-square.png" alt="">
+            <div v-show="register">
             <form action="" @submit="onSubmit">
                 <div>
                     <label for="emial">EMAIL ADDRESS</label>
@@ -15,22 +16,53 @@
                     <input type="password" id="password" v-model="password" placeholder="Password" required="required">
                 </div>
                 <div>
-                    <input name="remember" type="checkbox" v-model="remember" id="remember">
+                    <input name="remember" type="checkbox" v-model="remember" id="remember" >
                     <label for="checkbox">Remember me</label>
                 </div>
                 
                 <div>
                     <v-btn @click="$emit('logged')" type="submit" color="blue" block elevation="2" rounded>Log in</v-btn>
                     
-                </div>
-                
-                
-                <div class="my-4">
-                    <p>Don't have an account? <a @click="registerModal" href="">Register here.</a></p>
-                </div>
-                
+                </div>   
+                         
             </form>
-
+            <div class="my-4">
+                    <p>Don't have an account? <v-btn flat @click="registerModal" href="">Register here.</v-btn></p>
+            </div> 
+            </div>
+            <div v-show="!register">
+            <form  action="" @submit="authenticate">
+                <div>
+                    <label for="emial">Name</label>
+                    <input type="text" id="name" v-model="name" placeholder="">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" v-model="email" placeholder="email" required="required">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" v-model="password" required="required">
+                </div>
+                <div>
+                    <label for="password2">Confirm password</label>
+                    <input type="password" id="password2" v-model="password2" required="required">
+                    <p class="error" v-show="error">{{ error }}</p>
+                </div>
+                <div>
+                    <input name="remember" type="checkbox">
+                    <label for="checkbox">Remember me</label>
+                </div>
+                
+                <div>
+                    <v-btn @click="$emit('logged')" type="submit" color="blue" block elevation="2" rounded>Register</v-btn>
+                    
+                </div>
+            </form>
+            <div class="my-4">
+                    <p>Already have an account? <v-btn flat @click="registerModal" >Signin.</v-btn></p>
+                </div>
+            </div>    
         </div>
     </div>
 </div>
@@ -40,9 +72,13 @@
 export default {
     data(){
         return{
+        name:"",    
         email:'',
         password: "",
-        remember:false
+        password2:"",
+        remember:"",
+        register:true,
+        error:''
         }
     },
     props:[],
@@ -51,13 +87,30 @@ export default {
             this.$emit('closeModal')
         },
         registerModal(){
-       
+            this.register = !this.register
         },
         onSubmit(e){
             e.preventDefault()
             console.log("form submitted")
-        
-    },
+        },
+        authenticate(e){
+            e.preventDefault()
+            if (this.password !== this.password2) {
+                this.error ="passwords do not match"
+                setTimeout(()=>{this.error =""},2500)
+
+            }else if(this.password.length< 6){
+                this.error ="passwords is too short"
+                setTimeout(()=>{this.error =""},2500)
+            }
+            else{
+                console.log(this.name)
+                console.log(this.email)
+                console.log(this.password)
+                console.log(this.password2)
+               this.$router.push(to = "/home")
+            }
+        }
 }
 }
 </script>
