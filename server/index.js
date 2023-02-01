@@ -1,12 +1,21 @@
 const express = require("express")
 const dotenv = require("dotenv").config()
 const errorHandler = require('./middleware/errorMiddleware')
+const multer = require("multer")
+const path = require('path')
 const connectDB = require("./config/db")
 
 connectDB()
 const PORT = process.env.PORT || 5000
 const app = express()
 
+const storage = multer.diskStorage({
+    destination:'../public',
+    filename:(req,file,next)=>{
+        next(null,file.fieldname + '-' + Date.now())
+    }
+
+})
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))

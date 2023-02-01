@@ -3,8 +3,10 @@
     <div class="modal">
         <div class="login-modal">
             <h3>Welcome Back<i class="fa fa-times-circle" @click="closeModal"></i></h3>
+            <v-div class="logo mb-3" size="100">
+                <img src="/logo-square.png"  alt="">
+            </v-div>
             
-            <img src="/vue/hdtoday-clone/frontend/src/assets/logo-square.png" alt="">
             <div v-show="register">
             <form action="" @submit="onSubmit">
                 <div>
@@ -91,24 +93,26 @@ export default {
         },
         onSubmit(e){
             e.preventDefault()
-            console.log("form submitted")
+            this.$emit('logged')
         },
         authenticate(e){
             e.preventDefault()
+            
             if (this.password !== this.password2) {
                 this.error ="passwords do not match"
                 setTimeout(()=>{this.error =""},2500)
 
             }else if(this.password.length< 6){
-                this.error ="passwords is too short"
+                this.error ="password is too short"
                 setTimeout(()=>{this.error =""},2500)
             }
             else{
+                // this.$emit('logged')
                 console.log(this.name)
                 console.log(this.email)
                 console.log(this.password)
                 console.log(this.password2)
-               this.$router.push(to = "/home")
+               
             }
         }
 }
@@ -178,6 +182,11 @@ input[type="checkbox"] {
     font-weight: bold;
     color: #777;
     cursor: pointer;
+}
+.logo{
+    padding: 25px 60px;
+    text-align: center;
+    margin: 0em 6em 0em 2em;
 }
 .submit {
     position: relative;

@@ -5,7 +5,11 @@
       <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
       <v-spacer></v-spacer>
       <v-div>
-        <v-btn class="right" flat @click="toggleModal"><i left class="fa fa-user"></i></v-btn>
+        <v-btn class="right" flat @click="toggleModal">
+          <i v-show="loggedIn" left class="fa fa-user">
+          </i>
+          <v-avatar color="warning lighten-2" size="40" v-show="!loggedIn">samson</v-avatar>
+        </v-btn>
       </v-div>
     
    
@@ -34,7 +38,7 @@ export default {
   components:{
     
   },
-  props:['logged'],
+  props:['loggedIn'],
 
   data(){
     return{

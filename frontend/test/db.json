@@ -5,7 +5,8 @@
       "Year":2021,
       "Title":"Puss in Boots: The Last Wish",
       "Minutes":"104m",
-      "Poster":"https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
+      "Poster":"/puss_in_boots.jpg",
+      "Tag":"Movie",
       "href":"/movie/watch-puss-in-boots-the-last-wish-full-91342",
       "alt":"watch-Puss in Boots: The Last Wish"
     },
@@ -14,7 +15,8 @@
       "Year":2023,
       "Title":"M3GAN",
       "Minutes":"102m",
-      "Poster":"https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
+      "Poster":"/M3GAN.jpg",
+      "Tag":"Movie",
       "href":"/movie/watch-m3gan-full-91330",
       "alt":"watch-m3gan"
     },
@@ -23,7 +25,8 @@
       "Year":2022,
       "Title":"DUNE",
       "Minutes":"124m",
-      "Poster":"https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
+      "Poster":"/DUNE.jpg",
+      "Tag":"Movie",
       "href":"/movie/watch-dune-full-91342",
       "alt":"watch-dune"
     }
@@ -34,7 +37,8 @@
       "Seasons":1,
       "Title":"The Last of Us",
       "EPs":2,
-      "Poster":"src/assets/the_last_of_us",
+      "Poster":"/download.jpg",
+      "Tag":"TV",
       "href":"/movie/watch-the-last-of-us-full-91342",
       "alt":"watch-the last of us"
     },
@@ -43,7 +47,8 @@
       "Season":6,
       "Title":"Game of Thrones",
       "EPs":6,
-      "Poster":"src/assets/game_of_thrones.jpg",
+      "Poster":"/download.jpg",
+      "Tag":"TV",
       "href":"/movie/game_of_thrones",
       "alt":"watch-game-of-thrones"
     },
@@ -52,7 +57,8 @@
       "Season":1,
       "Title":"House of the Dragon",
       "EPs":10,
-      "Poster":"src/assets/house_of_the_dragon.jpg",
+      "Poster":"/download.jpg",
+      "Tag":"TV",
       "href":"/movie/house_of_the_dragon-full-91342",
       "alt":"watch-house-of-the-dragon"
     }

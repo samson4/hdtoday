@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-    <Header @toggleModal="toggleModal"/>
+    <Header @toggleModal="toggleModal" :loggedIn="loggedIn"/>
     <router-link to="/"><i class="fa fa-play-circle"></i> Movies</router-link> ||
     <router-link to="/TV-Shows"><i class="fa fa-list-ul"></i> TV Shows</router-link>
       <div v-if="showLogin">
@@ -40,6 +40,7 @@ export default {
     },
     autenticated(){
       this.loggedIn=!this.loggedIn
+      console.log(this.loggedIn)
     }
     }
   }
