@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
+import Movie from '../views/movie/movie.vue'
 import TV_Shows from '../views/TV_Shows.vue'
+import Top from '../views/Top-IMDB.vue'
 import About from '../views/AboutView.vue'
 import movieDetail from '../views/movie/movieDetail.vue'
 import Notfound from '../views/404NotFound'
@@ -20,6 +22,21 @@ const routes = [
     path:'/about',
     name:'about',
     component:About
+  },
+  {
+    path:'/movie',
+    name:'movie',
+    component:Movie
+  },
+  {
+    path:'/tv-show',
+    name:'tv-show',
+    component:TV_Shows
+  },
+  {
+    path:'/top-imdb',
+    name:'top',
+    component:Top
   },
   {
     path:'/movie/:slug',

@@ -1,11 +1,11 @@
 <template>
 
-  <v-container class="card ma-5 pa-5">
+  <v-container class="card ma-3 pa-3">
   <v-row >
-  <v-card  width="256" height="480" class="" max-width="256" :key="tv_show.Title" v-for="tv_show in tv_shows">
-    <router-link :to="{ name:'movie-detail', params: {slug:tv_show.alt}}">
+  <v-card   max-height="460"  max-width="256" :key="tv_show.Title" v-for="tv_show in tv_shows">
+    <router-link   :to="{ name:'movie-detail', params: {slug:tv_show.alt}}">
 
-    <v-img contain :src="tv_show.Poster"><i class="fa fa-play-circle"></i>
+    <v-img @mouseover="hoverPlay" @mouseout="hoverPlay" contain width="250" height="380" :src="tv_show.Poster"><i :class="[hover?'fa fa-play-circle' : '']"></i>
 
       <v-chip :ripple="false" class="chip ma-2"  label small >{{ tv_show.Quality }}</v-chip>
     </v-img>
@@ -30,6 +30,7 @@
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import axios from 'axios';
 export default {
   components:{
     Header,
@@ -38,8 +39,15 @@ export default {
   // props:['tv_shows'],
   data(){
     return{
-      tv_shows:[]
+      tv_shows:[],
+      hover:false
     }
+  },
+  methods:{
+    hoverPlay(){
+      this.hover = !this.hover
+    }
+
   },
   async created(){
     try{
@@ -51,7 +59,6 @@ export default {
     }
   },
  
-
 }
 </script>
 

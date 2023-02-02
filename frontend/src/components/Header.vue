@@ -48,9 +48,9 @@ export default {
         {catagory:'Home',route:"/"},
         {catagory:'Genre',route:"/genre"},
         {catagory:'Country',route:"/Country"},
-        {catagory:'Movies',route:"/Movies"},
-        {catagory:'TV Shows',route:"/TV_Shows"},
-        {catagory:'Top IMDB',route:"/Top_IMDB"},
+        {catagory:'Movies',route:"/movie"},
+        {catagory:'TV Shows',route:"/tv-show"},
+        {catagory:'Top IMDB',route:"/Top-IMDB"},
         {catagory:'Android App',route:"/app"},
       ]
     }
