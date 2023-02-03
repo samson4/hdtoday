@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
     <v-col
-      v-for="member in team"
+      v-for="member in allTeams"
       :key="member.name"
       class="d-flex child-flex"
       cols="4"
@@ -42,6 +42,7 @@
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import { mapGetters } from 'vuex';
 import axios from 'axios';
 export default {
   name:'about',
@@ -49,16 +50,10 @@ export default {
     Header,
     Footer
   },
+  computed:mapGetters(['allTeams']),
   data(){
     return{
-      team:[
-      {name:"The net ninja",role:"web developer",avatar:"/DUNE.jpg"},
-      {name:"ryu",role:"web designer",avatar:"/download.jpg"},
-      {name:"chun li",role:"graphics mavrik",avatar:"/puss_in_boots.jpg"},
-      {name:"The net ninja",role:"web developer",avatar:"/DUNE.jpg"},
-      {name:"ryu",role:"web designer",avatar:"/download.jpg"},
-      {name:"chun li",role:"graphics mavrik",avatar:"/puss_in_boots.jpg"}
-      ],
+ 
     }
   }
 }

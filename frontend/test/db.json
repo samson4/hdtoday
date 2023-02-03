@@ -2,6 +2,7 @@
     "movies":[
     {
       "Quality":"HD",
+      "id":1,
       "Year":2021,
       "Title":"Puss in Boots: The Last Wish",
       "Minutes":"104m",
@@ -12,6 +13,7 @@
     },
     {
       "Quality":"HD",
+      "id":2,
       "Year":2023,
       "Title":"M3GAN",
       "Minutes":"102m",
@@ -22,6 +24,7 @@
     },
     {
       "Quality":"HD",
+      "id":3,
       "Year":2022,
       "Title":"DUNE",
       "Minutes":"124m",
@@ -34,26 +37,29 @@
     "tv_shows":[
     {
       "Quality":"HD",
+      "id":1,
       "Seasons":1,
       "Title":"The Last of Us",
       "EPs":2,
-      "Poster":"/download.jpg",
+      "Poster":"/last.jpg",
       "Tag":"TV",
       "href":"/movie/watch-the-last-of-us-full-91342",
       "alt":"watch-the last of us"
     },
     {
       "Quality":"HD",
+      "id":2,
       "Season":6,
       "Title":"Game of Thrones",
       "EPs":6,
-      "Poster":"/download.jpg",
+      "Poster":"/game.jpg",
       "Tag":"TV",
       "href":"/movie/game_of_thrones",
       "alt":"watch-game-of-thrones"
     },
     {
       "Quality":"HD",
+      "id":3,
       "Season":1,
       "Title":"House of the Dragon",
       "EPs":10,

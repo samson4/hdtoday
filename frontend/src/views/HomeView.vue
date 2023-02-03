@@ -1,6 +1,7 @@
 <template>
   <div>
   <nav class="my-5 mx-4">
+    
     <Movie :movies="movies"/>
     <h2>Latest TV Shows</h2>
     <TV_Shows :tv_shows="tv_shows"/>

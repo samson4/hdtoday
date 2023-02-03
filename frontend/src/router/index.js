@@ -5,6 +5,8 @@ import TV_Shows from '../views/TV_Shows.vue'
 import Top from '../views/Top-IMDB.vue'
 import About from '../views/AboutView.vue'
 import movieDetail from '../views/movie/movieDetail.vue'
+import Profile from '../views/user/Profile.vue'
+import Favorite from '../views/user/Favorite.vue'
 import Notfound from '../views/404NotFound'
 
 const routes = [
@@ -43,6 +45,16 @@ const routes = [
     name:'movie-detail',
     component:movieDetail,
     props:true
+  },
+  {
+    path:'/user/favorite',
+    name:'favorite',
+    component:Favorite
+  },
+  {
+    path:'/user/profile',
+    name:'profile',
+    component:Profile
   },
   {
     path:'/home',
