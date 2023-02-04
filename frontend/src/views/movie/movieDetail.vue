@@ -1,15 +1,43 @@
 <template>
-  <v-div>
+  <v-div class="container" style="background-image:url('/vue/hdtoday-clone/frontend/public/wakanda-bg.jpg')">
   <v-breadcrumbs>Home{{ previous }}</v-breadcrumbs>
-    <v-img  src="/download.jpg"><v-card-title> {{slug}}</v-card-title></v-img>
+    <v-img  src="/wakanda-bg.jpg"><v-card-title> {{slug}}</v-card-title></v-img>
     
-  <h1></h1>
-  <v-card>
-    <v-card-title> {{slug}}</v-card-title>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum, voluptatum. Possimus facilis voluptas velit assumenda, similique veritatis unde vel quo atque debitis quam iste minus laudantium aperiam, quis illo consequuntur. Doloribus, necessitatibus? Maxime saepe laudantium enim optio ipsam, voluptatum voluptate eaque commodi quae repudiandae hic fuga quasi, beatae aliquid veniam?</p>
-    <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum inventore pariatur nulla tempora ipsam atque adipisci obcaecati debitis vel incidunt eius, ad deserunt corrupti? Alias quia quo dolorem mollitia!</p>
+  
+    
+  <div >
+    <v-card
+    class="mx-auto mx-2 my-3"
+    width="900"
+    border-radius="10"
+  >
+    <v-card-text>
+      <v-avatar size="260" rounded> <v-img  width="250" height="380"   src="/wakanda.jpg" alt=""></v-img></v-avatar><v-btn class="watch" color="blue"> <i class="fa fa-play"></i>Watch now</v-btn><v-chip class="favorite"><i class="fa fa-plus"></i>Add to favorite</v-chip>
+      
+      <div>BlackPanter: Wakanda Forever</div>
+   
+      <p class="text-h4 text--primary">
+        <v-btn flat border><i class="fa fa-video"></i> Trailer </v-btn>  <v-btn flat border>HD</v-btn>
+      </p>
+      <p>{{ Slug }}</p>
+      <p>Released</p>
+      <p>Genre:</p>
+      <p>Casts</p>
+
+      <div class="text--primary">
+        
+      </div>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn
+        text
+        color="deep-purple accent-4"
+      >
+        
+      </v-btn>
+    </v-card-actions>
   </v-card>
+  </div>
   {{ name }}
   </v-div>
 
@@ -34,9 +62,21 @@ export default {
 </script>
 
 <style>
-img{
-  margin-top: -1.25rem;
-  margin-left: -1.25rem;
-  margin-right: -1.25rem;
+.film-poster{
+
+  padding: 10% 10% 10% 0.5%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+
 }
+.favorite{
+  float: right;
+  border-radius: 6px;
+  background: gainsboro;
+}
+.watch{
+  float:initial;
+}
+
 </style>

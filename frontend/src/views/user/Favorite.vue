@@ -66,9 +66,7 @@ data(){
 },
 methods:{
     deleteFavorite(id){
-       
         this.tv_shows = this.tv_shows.filter((tv_show)=>tv_show.id !== id)
-        
     }
 }
 

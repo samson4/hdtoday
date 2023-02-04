@@ -2,12 +2,13 @@
   <div class="backdrop" >
     <div class="modal">
         <div class="login-modal">
-            <h3>Welcome Back<i class="fa fa-times-circle" @click="closeModal"></i></h3>
-            <v-div class="logo mb-3" size="100">
+            
+            <!-- <v-div class="logo mb-3" size="100">
                 <img src="/logo-square.png"  alt="">
-            </v-div>
+            </v-div> -->
             
             <div v-show="register">
+                <h3>Welcome Back<i class="fa fa-times-circle" @click="closeModal"></i></h3>
             <form action="" @submit="onSubmit">
                 <div>
                     <label for="emial">EMAIL ADDRESS</label>
@@ -34,6 +35,7 @@
             </div>
             <div v-show="!register">
             <form  action="" @submit="authenticate">
+                <h3>Create an Account</h3>
                 <div>
                     <label for="emial">Name</label>
                     <input type="text" id="name" v-model="name" placeholder="">
@@ -61,9 +63,11 @@
                     
                 </div>
             </form>
-            <div class="my-4">
+            <v-divider></v-divider>
+            <div class="my-4 modal-bottom">
                     <p>Already have an account? <v-btn flat @click="registerModal" >Signin.</v-btn></p>
                 </div>
+                    
             </div>    
         </div>
     </div>
@@ -88,7 +92,9 @@ export default {
         closeModal(){
             this.$emit('closeModal')
         },
-        registerModal(){
+        registerModal(e){
+            e.preventDefault()
+    
             this.register = !this.register
         },
         onSubmit(e){
@@ -201,4 +207,8 @@ input[type="checkbox"] {
     margin-top: 10px;
     font-size: 0.8em;
 }
+h3{
+    text-align: center;
+}
+
 </style>
