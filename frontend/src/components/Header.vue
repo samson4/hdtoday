@@ -1,6 +1,6 @@
 <template>
   
-  <v-toolbar class="toolbar">
+  <v-toolbar class="toolbar mb-4">
       
       <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
       <v-spacer></v-spacer>

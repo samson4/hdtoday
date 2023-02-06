@@ -1,7 +1,7 @@
 <template>
 
   <v-container class="card ma-3 pa-3">
-  <v-row >
+  <v-row justify="space-around">
   <v-card   max-height="460"  max-width="256" :key="tv_show.Title" v-for="tv_show in tv_shows">
     <router-link   :to="{ name:'movie-detail', params: {slug:tv_show.alt}}">
 

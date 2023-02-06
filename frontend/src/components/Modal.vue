@@ -3,12 +3,11 @@
     <div class="modal">
         <div class="login-modal">
             
-            <!-- <v-div class="logo mb-3" size="100">
-                <img src="/logo-square.png"  alt="">
-            </v-div> -->
-            
             <div v-show="register">
                 <h3>Welcome Back<i class="fa fa-times-circle" @click="closeModal"></i></h3>
+            <v-div class="logo">
+                <v-img height="50" width="44" src="/logo-square.png"  alt=""></v-img>
+            </v-div>
             <form action="" @submit="onSubmit">
                 <div>
                     <label for="emial">EMAIL ADDRESS</label>
@@ -29,6 +28,7 @@
                 </div>   
                          
             </form>
+            <v-divider></v-divider>
             <div class="my-4">
                     <p>Don't have an account? <v-btn flat @click="registerModal" href="">Register here.</v-btn></p>
             </div> 
@@ -189,11 +189,7 @@ input[type="checkbox"] {
     color: #777;
     cursor: pointer;
 }
-.logo{
-    padding: 25px 60px;
-    text-align: center;
-    margin: 0em 6em 0em 2em;
-}
+
 .submit {
     position: relative;
     cursor: pointer;
@@ -202,6 +198,7 @@ input[type="checkbox"] {
     color: white;
     border-radius: 10px;
 }
+
 .error {
     color:#ff0062;
     margin-top: 10px;

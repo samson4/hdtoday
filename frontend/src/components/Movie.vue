@@ -1,6 +1,6 @@
 <template>
   <v-container  class=" card ma-3 pa-3">
-    <v-row >
+    <v-row justify="space-around" >
   <v-card  @mouseover="hoverPlay" @mouseout="hoverPlay" max-width="256" max-height="460" :key="movie.Title" v-for="movie in movies">
   <router-link  :to="{name:'movie-detail' , params:{ slug: movie.alt}}">
    
