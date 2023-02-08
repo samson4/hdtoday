@@ -6,6 +6,7 @@ import Top from '../views/Top-IMDB.vue'
 import About from '../views/AboutView.vue'
 import movieDetail from '../views/movie/movieDetail.vue'
 import Profile from '../views/user/Profile.vue'
+import AllUsers from '../views/allUsers.vue'
 import Favorite from '../views/user/Favorite.vue'
 import Notfound from '../views/404NotFound'
 
@@ -55,6 +56,11 @@ const routes = [
     path:'/user/profile',
     name:'profile',
     component:Profile
+  },
+  {
+    path:'/user/all',
+    name:'allUsers',
+    component:AllUsers
   },
   {
     path:'/home',

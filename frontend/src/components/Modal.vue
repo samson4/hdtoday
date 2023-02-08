@@ -11,14 +11,14 @@
             <form action="" @submit="onSubmit">
                 <div>
                     <label for="emial">EMAIL ADDRESS</label>
-                    <input type="email" id="email" v-model="email" placeholder="name@email.com">
+                    <input type="email" id="loginemail" v-model="loginemail" placeholder="name@email.com">
                 </div>
                 <div>
                     <label for="password">PASSWORD</label>
-                    <input type="password" id="password" v-model="password" placeholder="Password" required="required">
+                    <input type="password" id="loginpassword" v-model="loginpassword" placeholder="Password" required="required">
                 </div>
                 <div>
-                    <input name="remember" type="checkbox" v-model="remember" id="remember" >
+                    <input name="remember" type="checkbox" v-model="loginremember" id="remember" >
                     <label for="checkbox">Remember me</label>
                 </div>
                 
@@ -35,7 +35,7 @@
             </div>
             <div v-show="!register">
             <form  action="" @submit="authenticate">
-                <h3>Create an Account</h3>
+                <h3>Create an Account<i class="fa fa-times-circle" @click="closeModal"></i></h3>
                 <div>
                     <label for="emial">Name</label>
                     <input type="text" id="name" v-model="name" placeholder="">
@@ -75,18 +75,25 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     data(){
         return{
         name:"",    
         email:'',
+        loginemail:"",
+        loginpassword:'',
+        loginremember:'',    
         password: "",
         password2:"",
         remember:"",
         register:true,
-        error:''
+        error:'',
+
         }
     },
+    
     props:[],
     methods:{
         closeModal(){
@@ -97,11 +104,16 @@ export default {
     
             this.register = !this.register
         },
-        onSubmit(e){
+        async onSubmit(e){
             e.preventDefault()
+            const loginUserData = await axios.post("http://localhost:8008/user/login",{email:this.loginemail,password:this.loginpassword})
+            alert("welcome")
+            console.log(loginUserData)
+            this.closeModal()
             this.$emit('logged')
+           
         },
-        authenticate(e){
+       async authenticate(e){
             e.preventDefault()
             
             if (this.password !== this.password2) {
@@ -113,13 +125,14 @@ export default {
                 setTimeout(()=>{this.error =""},2500)
             }
             else{
-                // this.$emit('logged')
-                console.log(this.name)
-                console.log(this.email)
-                console.log(this.password)
-                console.log(this.password2)
+            const registerUserData = await axios.post("http://localhost:8008/user/",{name:this.name,email:this.email,password1:this.password,password2:this.password2})
+            console.log(registerUserData)
+            console.log("registered")
                
             }
+            
+
+
         }
 }
 }

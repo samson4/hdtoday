@@ -5,11 +5,27 @@
       <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
       <v-spacer></v-spacer>
       <v-div>
-        <v-btn class="right" flat @click="toggleModal">
-          <i v-show="loggedIn" left class="fa fa-user">
-          </i>
-          <v-avatar color="warning lighten-2" size="40" v-show="!loggedIn">samson</v-avatar>
+        <v-btn v-if="!loggedIn" class="right" flat >
+          <i  @click="toggleModal" left class="fa fa-user">  
+          </i> 
         </v-btn>
+        
+        <v-btn  v-else class="right" flat >
+          <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+            <v-btn color="warning lighten-2" v-bind="attrs" v-on="on" >samson</v-btn> 
+            </template>
+            <v-list>
+              <v-list-item>
+                <v-list-item-title>Profile</v-list-item-title>
+                <v-list-item-title>My Favorite</v-list-item-title>
+                <v-divider></v-divider>
+                <v-list-item-title>Logout</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-btn>
+        
       </v-div>
     
    

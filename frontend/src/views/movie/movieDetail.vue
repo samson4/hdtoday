@@ -4,26 +4,6 @@
     <v-img  src="/wakanda-bg.jpg"><v-card-title color="text--grey"> {{slug}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
     
     <br>
-
-
-    <v-card
-    class="mx-auto"
-    width="900"
-    border-radius="10"
-  >
-    <v-card-text>
-      <v-card-text class="text-center">If current server doesn't work please try other servers below.</v-card-text>
-      <v-row dense align="center" class="fill-height">
-        <v-col class="mr-1" cols="12" align-self="start">
-      <v-div class="text-center">
-        <V-chip class="ma-2" large><i><small>Server UpCloud</small></i></V-chip>
-        <V-chip class="ma-2" x-large><i><small>Server Vidcloud</small></i></V-chip>
-        <V-chip class="ma-2" x-large><i><small>Server Streamlare</small></i></V-chip>
-      </v-div>  
-    </v-col>
-    </v-row>
-    </v-card-text>
-  </v-card>
   <br>
   <div>
     <v-card
@@ -39,13 +19,19 @@
           <br>
           
         <v-div class="info " justify="center">
+          <br>
         <h2>{{slug}}</h2>
           <br>
           <v-btn flat border><i class="fa fa-video"></i> Trailer </v-btn>  <v-btn flat border>HD</v-btn> <v-btn color="warning" flat>IMDB:N/A</v-btn>
-        <p>{{ Slug }}</p>
+        
+        <p>The sequel to Black Panther (2018).</p>
+        <br>
         <p>Released:</p>
         <p>Genre:</p>
         <p>Casts:</p>
+        <p>Duration</p>
+        <p>Country</p>
+        <p>Production</p>
       </v-div>
     </v-col>
     </v-row>
@@ -79,6 +65,24 @@
 </v-div>
   <br>
   <br>
+  <v-card
+    class="mx-auto"
+    width="900"
+    border-radius="10"
+  >
+    <v-card-text>
+      <v-card-text class="text-center">If current server doesn't work please try other servers below.</v-card-text>
+      <v-row class="fill-height" justify="space-around">
+       <v-col class="mr-1" cols="12" align-self="start">
+        <v-div class="servers">
+          <v-btn ><i class="fa fa-play"></i><small>Server UpCloud</small></v-btn>
+          <v-btn><i class="fa fa-play"></i><small>Server Vidcloud</small></v-btn>
+          <v-btn><i class="fa fa-play"></i><small>Server Streamlare</small></v-btn>
+        </v-div>  
+       </v-col>
+    </v-row>
+    </v-card-text>
+  </v-card>
   <v-div>
     <v-card-title class="mx-2"> You May Also Like</v-card-title>
     <v-container class="card ma-3 pa-3" >
@@ -145,6 +149,7 @@ export default {
 .avatar{
   float: left;
 }
+
 
 
 </style>

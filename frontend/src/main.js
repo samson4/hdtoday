@@ -6,7 +6,7 @@ import store from './store'
 import axios from 'axios'
 import { loadFonts } from './plugins/webfontloader'
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:8008'
 loadFonts()
 
 createApp(App)

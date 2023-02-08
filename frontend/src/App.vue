@@ -39,7 +39,7 @@ export default {
       this.showLogin =! this.showLogin
     },
     autenticated(){
-      this.loggedIn=!this.loggedIn
+      this.loggedIn=true
       console.log(this.loggedIn)
     }
     }

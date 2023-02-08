@@ -1,6 +1,7 @@
 const express = require("express")
 const dotenv = require("dotenv").config()
 const errorHandler = require('./middleware/errorMiddleware')
+const cors = require("cors")
 const multer = require("multer")
 const path = require('path')
 const connectDB = require("./config/db")
@@ -16,7 +17,7 @@ const storage = multer.diskStorage({
     }
 
 })
-
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 

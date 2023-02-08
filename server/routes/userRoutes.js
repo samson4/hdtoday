@@ -4,9 +4,10 @@ const asyncHandler = require("express-async-handler")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const User = require("../models/userModel")
+var cors = require('cors')
 const authRequired = require("../middleware/authRequired")
 
-router.get("/",async(req,res)=>{
+router.get("/",cors(),async(req,res)=>{
     const users = await User.find()
     res.json(users)
 })
@@ -17,7 +18,7 @@ const token = (id)=>{
     })
 }
 // register user
-router.post('/', asyncHandler(async(req,res)=>{
+router.post('/',cors(), asyncHandler(async(req,res)=>{
 
     const name=req.body.name
     const email=req.body.email
@@ -89,7 +90,7 @@ router.post("/login",async(req,res)=>{
         res.json({
             _id:user.id,
             name:user.userName,
-            emial:user.emailAddress,
+            email:user.emailAddress,
             Token:token(user._id)
         })
     }else{
