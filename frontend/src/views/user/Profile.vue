@@ -40,11 +40,19 @@ export default {
         }
     },
     created(){
-       console.log(this.$route)
+        const Token = localStorage.getItem('Token')
+       console.log(localStorage.getItem('Token'))
+
     },
     methods:{
        async handleSubmit(){
-        const updateUserData = await axios.put("http://localhost:8008/user/profile",hea,{Name:this.userName,Email:this.email,Password1:this.password,Password2:this.confirmPassword})
+
+        const config = {
+            headers:{
+                Authorization:`Bearer ${this.Token}`
+            }
+        }
+        const updateUserData = await axios.put("http://localhost:8008/user/profile",{Name:this.userName,Email:this.email,Password1:this.password,Password2:this.confirmPassword},config)
         console.log(updateUserData)
         }
     }

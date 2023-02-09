@@ -70,7 +70,8 @@ router.post('/',cors(), asyncHandler(async(req,res)=>{
 
 // login user
 router.post("/login",async(req,res)=>{
-    const email = req.body.email
+    try {
+        const email = req.body.email
     const password = req.body.password
     if(!email || !password){
         res.status(400)
@@ -97,6 +98,11 @@ router.post("/login",async(req,res)=>{
         res.status(400)
         throw new Error("password is invalid.")
     }
+        
+    } catch (error) {
+        console.log(error)
+    }
+    
     
 })
 // update profile
