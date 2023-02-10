@@ -11,13 +11,6 @@
     <input  type="text" required v-model="userName">
     <label>EMAIL ADDRESS</label>
     <input type="email" required v-model="email">
-    <label>Password</label>
-    <input type="password" required v-model="password">
-    <div v-if="passwordError" class="error">
-        {{ passwordError }}
-    </div>
-    <label >CONFIRM NEW PASSWORD</label>
-    <input type="password" required v-model="confirmPassword">
     <div>
         <v-btn type="submit" class="submit">Submit</v-btn>
     </div>
@@ -40,20 +33,25 @@ export default {
         }
     },
     created(){
-        const Token = localStorage.getItem('Token')
-       console.log(localStorage.getItem('Token'))
+        const Token = sessionStorage.getItem('Token')
+       console.log(sessionStorage.getItem('Token'))
 
     },
     methods:{
        async handleSubmit(){
-
+        const Token = sessionStorage.getItem('Token')
         const config = {
             headers:{
-                Authorization:`Bearer ${this.Token}`
+                Authorization:`Bearer ${Token}`
             }
         }
-        const updateUserData = await axios.put("http://localhost:8008/user/profile",{Name:this.userName,Email:this.email,Password1:this.password,Password2:this.confirmPassword},config)
+        if(Token){
+        const updateUserData = await axios.put("http://localhost:8008/user/profile",{Name:this.userName,Email:this.email},config)
         console.log(updateUserData)
+        }else{
+            this.$router.push(-1)
+        }
+        
         }
     }
 }

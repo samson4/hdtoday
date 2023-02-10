@@ -107,16 +107,16 @@ router.post("/login",async(req,res)=>{
 })
 // update profile
 router.put("/profile",authRequired,asyncHandler(async (req,res)=>{
-    try{
+   
         // if(!req.body){ 
         //     res.json({message:""}) 
         // }
-        const {Name,Email,Password1,Password2} = req.body
-        if(!Name||!Email||!Password1||!Password2){
+        const {Name,Email} = req.body
+        if(!Name||!Email){
             res.status(400)
             throw new Error('Please include all fields')
         }
-        const updatedProfile = await User.findByIdAndUpdate(req.user.id,{userName:Name,emailAddress:Email,password1:Password1,password2:Password2})
+        const updatedProfile = await User.findByIdAndUpdate(req.user.id,{userName:Name,emailAddress:Email})
         if(updatedProfile){
             res.status(200).json(updatedProfile)
         }else{
@@ -124,9 +124,7 @@ router.put("/profile",authRequired,asyncHandler(async (req,res)=>{
             throw new Error('Update failed')
         }
         
-    }catch(err){
-        throw new Error(err)
-    }
+  
 
 }))
 

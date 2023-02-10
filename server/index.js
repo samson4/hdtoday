@@ -13,10 +13,13 @@ const app = express()
 const storage = multer.diskStorage({
     destination:'../public',
     filename:(req,file,next)=>{
-        next(null,file.fieldname + '-' + Date.now())
+        next(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }
-
 })
+const upload = multer({
+    storage:storage
+}).single('poster')
+
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))

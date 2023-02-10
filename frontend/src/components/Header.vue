@@ -13,7 +13,7 @@
         <v-btn  v-else class="right" flat >
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
-            <v-btn color="warning lighten-2" v-bind="attrs" v-on="on" >samson</v-btn> 
+            <v-btn color="warning lighten-2" v-bind="attrs" v-on="on" >user</v-btn> 
             </template>
             <v-list>
               <v-list-item>
@@ -60,6 +60,7 @@ export default {
     return{
       Search:'',
       drawer:false,
+      name:'',
       Catagories:[
         {catagory:'Home',route:"/"},
         {catagory:'Genre',route:"/genre"},
@@ -77,6 +78,9 @@ methods:{
   },
   toggleSidebar(){
     this.drawer = !this.drawer
+  },
+  getUsername(){
+    this.name=localStorage.getItem(user)
   }
 
 }
