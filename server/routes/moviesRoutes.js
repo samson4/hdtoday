@@ -8,10 +8,19 @@ router.get('/',async(req,res)=>{
     const movies = await Movie.find()
     res.json(movies)
 })
+router.get('/:id',async(req,res)=>{
+    const movie = await Movie.findById(req.params.id)
+    if(!movie){
+        res.status(400)
+        throw new Error("Movie Not Found")
+    }
+    res.json(movie)
+})
 router.post('/',async(req,res)=>{
     try{
         const movie = await Movie.create({
             Title :req.body.Title,
+            Poster : req.body.Poster,
             Description :req.body.Description,
             Released :req.body.Released,
             Genre :req.body.Genre,

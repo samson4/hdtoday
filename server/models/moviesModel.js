@@ -10,6 +10,11 @@ const movieSchema = mongoose.Schema(
             type:String,
             required:false
         },
+        Quality:{
+            type:String,
+            enum:["HD","TS"],
+            default:"HD"
+        },
         Description:{
             type:String,
             default:""
@@ -33,7 +38,6 @@ const movieSchema = mongoose.Schema(
         Casts:{
             type:[String],
             required:true,
-            enum:["Timothée Chalamet", "Rebecca Ferguson", "Dave Bautista", "Stellan Skarsgård", "Charlotte Rampling","None"],
             default:["None"]
 
         },
@@ -46,7 +50,7 @@ const movieSchema = mongoose.Schema(
         Production:{
             type:[String],
             required:true,
-            enum:["Legendary Entertainment", "Framestore", "Double Negative (DNEG)", "Warner Bros. Pictures", "Villeneuve Films","None"],
+            enum:["Legendary Entertainment", "Framestore", "Double Negative (DNEG)", "Warner Bros. Pictures", "Villeneuve Films", "Marvel Studios", "Walt Disney Studios","None"],
             default:["None"]
         }
     }

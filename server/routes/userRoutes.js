@@ -116,7 +116,7 @@ router.put("/profile",authRequired,asyncHandler(async (req,res)=>{
             res.status(400)
             throw new Error('Please include all fields')
         }
-        const updatedProfile = await User.findByIdAndUpdate(req.user.id,{userName:Name,emailAddress:Email})
+        const updatedProfile = await User.findByIdAndUpdate(req.user.id,{userName:Name,emailAddress:Email}).save()
         if(updatedProfile){
             res.status(200).json(updatedProfile)
         }else{

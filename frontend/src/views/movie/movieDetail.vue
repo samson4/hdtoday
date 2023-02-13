@@ -14,7 +14,7 @@
     <v-card-text>
       <v-row dense align="center" class="fill-height">
         <v-col class="mr-1" cols="12" align-self="start">
-          <v-avatar class="avatar mb-12" size="260" rounded> <v-img  width="250" height="380"   src="/wakanda.jpg" alt=""></v-img></v-avatar><v-div class="watch"><v-btn color="blue"> <i class="fa fa-play"></i>Watch now</v-btn></v-div><v-chip class="favorite"><i class="fa fa-plus"></i>Add to favorite</v-chip>     
+          <v-avatar class="avatar mb-12" size="260" rounded> <v-img  width="250" height="380"   src="/wakanda.jpg" alt=""></v-img></v-avatar><v-div class="watch"><v-btn color="blue"> <i class="fa fa-play"></i>Watch now</v-btn></v-div><v-chip @click="addtoFavorites" class="favorite"><i class="fa fa-plus"></i>Add to favorite</v-chip>     
           <br>
           <br>
           
@@ -123,7 +123,12 @@ export default {
     }
   },
   mounted(){
-    console.log(this.$route)
+   
+  },
+  methods:{
+    addtoFavorites(){
+      alert("Added to favorites")
+    }
   }
 }
 
