@@ -2,7 +2,7 @@
     <v-container>
       <v-div>
         
-        <form enctype="multipart/form-data">
+        <form enctype="multipart/form-data" @submit="uploadMovie()">
                 
                     <label for="poster">Poster</label>
                     <input type="file" name="poster">
@@ -40,7 +40,7 @@
 
                     <label for="Country">Country</label>
                     <select name="" id="" v-model="Country">
-                        <option value="United States">United States</option>
+                        <option value="United States of America">United States of America</option>
                         <option value="Argentina">Argentina</option>
                         <option value="Australia ">Australia</option>
                         <option value="Brazil">Brazil</option>
@@ -80,9 +80,6 @@
     </v-div>
 </v-div>
       <v-divider></v-divider>
-  
-        
-            <p>{{ }}</p>
             <p>{{ Title}}</p>
             <p>{{ Description }}</p>
             <p>{{ Released }}</p>
