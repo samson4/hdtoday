@@ -1,11 +1,11 @@
 <template>
    <v-div>
-    <v-div>
+    <v-div class="mx-4">
        <p> Home / {{ breadcrumb }}</p>
     </v-div>
    
   <v-card  class="ma-4">  
-   
+   <h2 class="ma-4">Update Profile</h2>
   <form @submit.prevent="handleSubmit">
     <label>YOUR NAME</label>
     <input  type="text" required v-model="userName">
@@ -16,7 +16,9 @@
     </div>
   </form>
 </v-card>
+
 </v-div>
+
 </template>
 
 <script>
@@ -28,14 +30,12 @@ export default {
             userName:'',
             email:'',
             password:"",
-            confirmPassword:''
+            confirmPassword:'',
+            
 
         }
     },
     created(){
-        const Token = sessionStorage.getItem('Token')
-       console.log(sessionStorage.getItem('Token'))
-
     },
     methods:{
        async handleSubmit(){
@@ -47,6 +47,7 @@ export default {
         }
         if(Token){
         const updateUserData = await axios.put("http://localhost:8008/user/profile",{Name:this.userName,Email:this.email},config)
+        alert("Profile Updated")
         console.log(updateUserData)
         }else{
             this.$router.push(-1)
@@ -117,4 +118,5 @@ input[type="checkbox"] {
     margin-top: 10px;
     font-size: 0.8em;
 }
+
 </style>

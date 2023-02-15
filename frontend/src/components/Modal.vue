@@ -107,7 +107,7 @@ export default {
         async onSubmit(e){
             e.preventDefault()
             const loginUserData = await axios.post("http://localhost:8008/user/login",{email:this.loginemail,password:this.loginpassword})
-            console.log(loginUserData.data.Token)
+            console.log(loginUserData.data.name)
             sessionStorage.setItem("Token",loginUserData.data.Token)
             localStorage.setItem("user",loginUserData.data.name)
             this.closeModal()

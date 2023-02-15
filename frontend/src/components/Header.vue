@@ -5,26 +5,25 @@
       <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
       <v-spacer></v-spacer>
       <v-div>
-        <v-btn v-if="!loggedIn" class="right" flat >
+        <v-btn v-if="is_loggedin == false" class="right" flat >
           <i  @click="toggleModal" left class="fa fa-user">  
           </i> 
         </v-btn>
         
-        <v-btn  v-else class="right" flat >
-          <v-menu offset-y>
-            <template v-slot:activator="{ on, attrs }">
-            <v-btn color="warning lighten-2" v-bind="attrs" v-on="on" >user</v-btn> 
-            </template>
-            <v-list>
-              <v-list-item>
-                <v-list-item-title>Profile</v-list-item-title>
-                <v-list-item-title>My Favorite</v-list-item-title>
-                <v-divider></v-divider>
-                <v-list-item-title>Logout</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-btn>
+      <v-menu v-else>
+      <template v-slot:activator="{ props }">
+        <v-btn class="user ma-4" v-bind="props">{{ name }}<i class="fa fa-caret-down ml-2"></i></v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item>
+          <v-list-item-title><i class="fa fa-user-circle mr-2"></i> Profile</v-list-item-title>
+          <v-list-item-title><i class="fa fa-heart mr-2"></i> Favorite</v-list-item-title>
+          <v-divider></v-divider>
+          <v-list-item-title class="logout"><i class="fa fa-sign-out-alt mr-2 "></i>Logout</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
         
       </v-div>
     
@@ -61,6 +60,7 @@ export default {
       Search:'',
       drawer:false,
       name:'',
+      is_loggedin:false,
       Catagories:[
         {catagory:'Home',route:"/"},
         {catagory:'Genre',route:"/genre"},
@@ -81,8 +81,17 @@ methods:{
   },
   getUsername(){
     this.name=localStorage.getItem(user)
+  
   }
 
+},
+created(){
+  const Token = sessionStorage.getItem('Token')
+        if(Token){
+            this.is_loggedin=true
+            this.name = localStorage.getItem("user")
+            console.log(sessionStorage.getItem('Token'))
+        }
 }
 
 }
@@ -98,5 +107,13 @@ methods:{
  .navigation{
   color: white;
   background: black;
+ }
+ .logout{
+  color: red;
+ }
+ .user{
+  background-color: #3e8afa;
+  color: white;
+  border-radius: 28px;
  }
 </style>
