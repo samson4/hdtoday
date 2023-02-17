@@ -2,23 +2,14 @@ const express = require("express")
 const dotenv = require("dotenv").config()
 const errorHandler = require('./middleware/errorMiddleware')
 const cors = require("cors")
-const multer = require("multer")
-const path = require('path')
+
 const connectDB = require("./config/db")
 
 connectDB()
 const PORT = process.env.PORT || 5000
 const app = express()
 
-const storage = multer.diskStorage({
-    destination:'../public',
-    filename:(req,file,next)=>{
-        next(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-    }
-})
-const upload = multer({
-    storage:storage
-}).single('poster')
+
 
 app.use(cors())
 app.use(express.json())

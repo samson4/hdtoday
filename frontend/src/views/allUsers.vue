@@ -5,7 +5,7 @@
         <form enctype="multipart/form-data" @submit="uploadMovie()">
                 
                     <label for="poster">Poster</label>
-                    <input type="file" name="poster">
+                    <input type="file" name="poster" @change="selectfile">
                 
                
                     <label for="Title">Title</label>
@@ -121,13 +121,30 @@ export default {
         
     },
     methods:{
+        selectfile(){
+            // this.Poster = this.$refs.file.poster[0]
+            
+        },
         async getUsers(){
             const payload =await axios.get("http://localhost:8008/user/")
             this.users= payload.data
             console.log(payload.data)
         },
         async uploadMovie(){
-            const payload = await axios.post("http://localhost:8008/movie",{Poster:this.Poster,Title:this.Title,Description:this.Description,Quality:this.Quality,Released:this.Released,Genre:this.Genre,Duration:this.Duration,Country:this.Country,Casts:this.Casts,Production:this.Production})
+            const formdata = {
+                Poster:this.Poster,
+                Title:this.Title,
+                Description:this.Description,
+                Quality:this.Quality,
+                Released:this.Released,
+                Genre:this.Genre,
+                Duration:this.Duration,
+                Country:this.Country,
+                Casts:this.Casts,
+                Production:this.Production
+            }
+
+            const payload = await axios.post("http://localhost:8008/movie/upload",formdata)
         }
     }
     }  

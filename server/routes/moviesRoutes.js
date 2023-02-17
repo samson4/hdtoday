@@ -35,6 +35,7 @@ router.post('/',async(req,res)=>{
         throw new Error(err)
     }
 })
+
 router.put('/:id',async(req,res)=>{
     try{
         const movie = await Movie.findById(req.params.id)
@@ -62,6 +63,43 @@ router.delete('/:id',async(req,res)=>{
     }catch(err){
 
     }
+})
+
+const multer = require("multer")
+const path = require('path')
+
+
+const storage = multer.diskStorage({
+    destination:'/public/',
+    filename:(req,file,next)=>{
+        next(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+const upload = multer({
+    storage:storage
+})
+
+router.post("/upload",upload.single('poster'),async(req,res)=>{
+    const fileName = req.file.filename
+    console.log(req.file)
+    try{
+        const movie = await Movie.create({
+            Title :req.body.Title,
+            Poster : `/${fileName}`,
+            Description :req.body.Description,
+            Released :req.body.Released,
+            Genre :req.body.Genre,
+            Duration :req.body.Duration,
+            Casts :req.body.Casts,
+            Country :req.body.Country,
+            Production :req.body.Production
+        })
+        res.status(200).json(movie)
+
+    }catch(err){
+        throw new Error(err)
+    }
+    
 })
 
 module.exports = router
