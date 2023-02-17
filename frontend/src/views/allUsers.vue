@@ -80,6 +80,7 @@
     </v-div>
 </v-div>
       <v-divider></v-divider>
+            <p>{{ Poster }}</p>
             <p>{{ Title}}</p>
             <p>{{ Description }}</p>
             <p>{{ Released }}</p>
@@ -121,8 +122,10 @@ export default {
         
     },
     methods:{
-        selectfile(){
+        selectfile(e){
             // this.Poster = this.$refs.file.poster[0]
+           this.Poster = e.target.files[0]
+           console.log(this.Poster)
             
         },
         async getUsers(){
@@ -131,7 +134,7 @@ export default {
             console.log(payload.data)
         },
         async uploadMovie(){
-            const formdata = {
+             fd = {
                 Poster:this.Poster,
                 Title:this.Title,
                 Description:this.Description,
@@ -144,7 +147,7 @@ export default {
                 Production:this.Production
             }
 
-            const payload = await axios.post("http://localhost:8008/movie/upload",formdata)
+            const payload = await axios.post("http://localhost:8008/movie/upload",fd)
         }
     }
     }  
