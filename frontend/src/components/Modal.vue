@@ -101,7 +101,6 @@ export default {
         },
         registerModal(e){
             e.preventDefault()
-    
             this.register = !this.register
         },
         async onSubmit(e){
@@ -110,9 +109,8 @@ export default {
             console.log(loginUserData.data.name)
             sessionStorage.setItem("Token",loginUserData.data.Token)
             localStorage.setItem("user",loginUserData.data.name)
-            this.closeModal()
             this.$emit('logged')
-           
+            this.$router.go(0)
         },
        async authenticate(e){
             e.preventDefault()

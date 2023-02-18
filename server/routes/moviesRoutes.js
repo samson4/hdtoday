@@ -70,7 +70,7 @@ const path = require('path')
 
 
 const storage = multer.diskStorage({
-    destination:'/public/',
+    destination:'D:/vue/hdtoday-clone/frontend/public',
     filename:(req,file,next)=>{
         next(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }

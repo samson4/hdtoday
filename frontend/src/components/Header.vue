@@ -17,10 +17,10 @@
 
       <v-list>
         <v-list-item>
-          <v-list-item-title><i class="fa fa-user-circle mr-2"></i> Profile</v-list-item-title>
-          <v-list-item-title><i class="fa fa-heart mr-2"></i> Favorite</v-list-item-title>
+          <v-list-item-title><a href="/user/profile"><i class="fa fa-user-circle mr-2"></i>Profile </a></v-list-item-title>
+          <v-list-item-title><a href="/user/favorite"><i class="fa fa-heart mr-2"></i>My Favorite</a></v-list-item-title>
           <v-divider></v-divider>
-          <v-list-item-title class="logout"><i class="fa fa-sign-out-alt mr-2 "></i>Logout</v-list-item-title>
+          <v-list-item-title class="logout"><a flat href=""><i class="fa fa-sign-out-alt mr-2 "></i>Logout </a></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -89,8 +89,7 @@ created(){
   const Token = sessionStorage.getItem('Token')
         if(Token){
             this.is_loggedin=true
-            this.name = localStorage.getItem("user")
-            console.log(sessionStorage.getItem('Token'))
+            this.name = localStorage.getItem("user") 
         }
 }
 
@@ -116,4 +115,10 @@ created(){
   color: white;
   border-radius: 28px;
  }
+ a {
+    text-decoration: inherit;
+    color: inherit;
+  
+}
+
 </style>
