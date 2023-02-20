@@ -1,7 +1,7 @@
 <template>
-  <v-div class="container" style="background-image:url('/vue/hdtoday-clone/frontend/public/wakanda-bg.jpg')">
+  <v-div class="container" style="">
   <v-breadcrumbs>Home{{ previous }}</v-breadcrumbs>
-    <v-img  src="/wakanda-bg.jpg"><v-card-title color="text--grey"> {{slug}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
+    <v-img  :src="movieDetail.Poster"><v-card-title color="text--grey"> {{movieDetail.Title}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
     
     <br>
   <br>
@@ -14,7 +14,7 @@
     <v-card-text>
       <v-row dense align="center" class="fill-height">
         <v-col class="mr-1" cols="12" align-self="start">
-          <v-avatar class="avatar mb-12" size="260" rounded> <v-img  width="250" height="380"   src="/wakanda.jpg" alt=""></v-img></v-avatar><v-div class="watch"><v-btn color="blue"> <i class="fa fa-play"></i>Watch now</v-btn></v-div><v-chip @click="addtoFavorites" class="favorite"><i class="fa fa-plus"></i>Add to favorite</v-chip>     
+          <v-avatar class="avatar mb-12" size="260" rounded> <v-img  width="250" height="380"   :src="movieDetail.Poster" alt=""></v-img></v-avatar><v-div class="watch"><v-btn color="blue"> <i class="fa fa-play"></i>Watch now</v-btn></v-div><v-chip @click="addtoFavorites" class="favorite"><i class="fa fa-plus"></i>Add to favorite</v-chip>     
           <br>
           <br>
           
@@ -24,14 +24,15 @@
           <br>
           <v-btn flat border><i class="fa fa-video"></i> Trailer </v-btn>  <v-btn flat border>HD</v-btn> <v-btn color="warning" flat>IMDB:N/A</v-btn>
         
-        <p>The sequel to Black Panther (2018).</p>
+        <p>{{ Description }}</p>
         <br>
-        <p>Released:</p>
-        <p>Genre:</p>
-        <p>Casts:</p>
-        <p>Duration</p>
-        <p>Country</p>
-        <p>Production</p>
+        <p>Released:{{ movieDetail.Released }}</p>
+        <p>Genre:{{ movieDetail.Genre }}</p>
+        <p>Casts:{{ movieDetail.Casts }}</p>
+        <v-spacer></v-spacer>
+        <p>Duration:{{ movieDetail.Duration }}</p>
+        <p>Country:{{ movieDetail.Country }}</p>
+        <p>Production:{{ movieDetail.Production }}</p>
       </v-div>
     </v-col>
     </v-row>
@@ -114,16 +115,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name:"movie-detail",
-  props:['slug'],
+  props:['id'],
   data(){
     return{
-      previous:this.$route.path
+      previous:this.$route.path,
+      _id:this.$route.params.id,
+      movieDetail:{},
     }
   },
-  mounted(){
-   
+  async created(){
+   const payload = await axios.get(`http://localhost:8008/movie/${this._id}`)
+   this.movieDetail = payload.data
+   console.log(this.movieDetail)
+   console.log()
+
   },
   methods:{
     addtoFavorites(){

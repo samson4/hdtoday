@@ -3,7 +3,7 @@
   <v-container class="card ma-3 pa-3">
   <v-row justify="space-around">
   <v-card   max-height="460"  max-width="256" :key="tv_show.Title" v-for="tv_show in tv_shows">
-    <router-link   :to="{ name:'movie-detail', params: {slug:tv_show.alt}}">
+    <router-link :to="{ name:'movie-detail', params: {id:tv_show.id}}">
 
     <v-img @mouseover="hoverPlay" @mouseout="hoverPlay" contain width="250" height="380" :src="tv_show.Poster"><i :class="[hover?'fa fa-play-circle' : '']"></i>
 
@@ -51,8 +51,8 @@ export default {
   },
   async created(){
     try{
-    const data = await fetch('http://localhost:3000/tv_shows')
-    const tv_show = await data.json()
+    const payload = await fetch('http://localhost:3000/tv_shows')
+    const tv_show = await payload.json()
     this.tv_shows = tv_show
     }catch(error){
       console.log(error)

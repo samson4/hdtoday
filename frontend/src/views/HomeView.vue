@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { defineComponent } from 'vue';
 
 import Movie from '@/components/Movie.vue';
@@ -31,9 +32,10 @@ export default defineComponent({
   },
   async mounted(){
     try{
-    const data=await fetch('http://localhost:3000/movies')
-    const movies = await data.json()  
+    const data=await axios.get('http://localhost:8008/movie')
+    const movies = await data.data  
     this.movies = movies
+    console.log(this.movies)
     }catch(error){
       console.log(error)
     }

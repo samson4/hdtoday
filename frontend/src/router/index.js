@@ -42,7 +42,7 @@ const routes = [
     component:Top
   },
   {
-    path:'/movie/:slug',
+    path:'/movie/:id',
     name:'movie-detail',
     component:movieDetail,
     props:true

@@ -9,12 +9,17 @@ router.get('/',async(req,res)=>{
     res.json(movies)
 })
 router.get('/:id',async(req,res)=>{
+    try{
     const movie = await Movie.findById(req.params.id)
-    if(!movie){
-        res.status(400)
-        throw new Error("Movie Not Found")
-    }
     res.json(movie)
+
+    }catch(error){
+        if(!this.movie){
+            res.status(400)
+            res.send("Movie Not Found")
+        }
+    }
+   
 })
 router.post('/',async(req,res)=>{
     try{
