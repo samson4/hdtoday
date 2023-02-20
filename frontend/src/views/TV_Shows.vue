@@ -3,7 +3,7 @@
   <v-container class="card ma-3 pa-3">
   <v-row justify="space-around">
   <v-card   max-height="460"  max-width="256" :key="tv_show.Title" v-for="tv_show in tv_shows">
-    <router-link :to="{ name:'movie-detail', params: {id:tv_show.id}}">
+    <router-link :to="{ name:'movie-detail', params: {id:tv_show._id}}">
 
     <v-img @mouseover="hoverPlay" @mouseout="hoverPlay" contain width="250" height="380" :src="tv_show.Poster"><i :class="[hover?'fa fa-play-circle' : '']"></i>
 
@@ -14,7 +14,7 @@
     <v-card-title>{{ tv_show.Title }}</v-card-title>
     
 
-    <v-card-subtitle>SS {{ tv_show.Seasons }} <span class="dot">.</span> EPs {{ tv_show.EPs }} <v-chip class="tag" label small>{{ tv_show.Tag }}</v-chip></v-card-subtitle>
+    <v-card-subtitle>SS {{ tv_show.Seasons }} <span class="dot">.</span> EPs {{ tv_show.Episodes }} <v-chip class="tag" label small>TV</v-chip></v-card-subtitle>
 
   
 
@@ -51,9 +51,10 @@ export default {
   },
   async created(){
     try{
-    const payload = await fetch('http://localhost:3000/tv_shows')
-    const tv_show = await payload.json()
+    const payload = await axios.get('http://localhost:8008/movie/tv_show')
+    const tv_show = await payload.data
     this.tv_shows = tv_show
+    console.log(tv_show)
     }catch(error){
       console.log(error)
     }

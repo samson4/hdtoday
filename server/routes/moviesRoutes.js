@@ -4,9 +4,23 @@ const { param } = require('./homeRoutes')
 const router = express.Router()
 
 
-router.get('/',async(req,res)=>{
-    const movies = await Movie.find()
+router.get('/movie',async(req,res)=>{
+    try{
+    const movies = await Movie.find({"Tag":null})
     res.json(movies)
+    }catch(error){
+        console.log(error)
+    }
+    
+})
+router.get('/tv_show',async(req,res)=>{
+    try{
+    const movies = await Movie.find({"Tag":[]})
+    res.json(movies)
+    }catch(error){
+        console.log(error)
+    }
+    
 })
 router.get('/:id',async(req,res)=>{
     try{

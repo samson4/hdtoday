@@ -23,14 +23,14 @@
         <h2>{{slug}}</h2>
           <br>
           <v-btn flat border><i class="fa fa-video"></i> Trailer </v-btn>  <v-btn flat border>HD</v-btn> <v-btn color="warning" flat>IMDB:N/A</v-btn>
+          
+        <p>{{ movieDetail.Description }}</p>
         
-        <p>{{ Description }}</p>
-        <br>
         <p>Released:{{ movieDetail.Released }}</p>
         <p>Genre:{{ movieDetail.Genre }}</p>
         <p>Casts:{{ movieDetail.Casts }}</p>
         <v-spacer></v-spacer>
-        <p>Duration:{{ movieDetail.Duration }}</p>
+        <p>Duration:{{ movieDetail.Minutes }}</p>
         <p>Country:{{ movieDetail.Country }}</p>
         <p>Production:{{ movieDetail.Production }}</p>
       </v-div>
@@ -128,7 +128,7 @@ export default {
     }
   },
   async created(){
-   const payload = await axios.get(`http://localhost:8008/movie/${this._id}`)
+   const payload = (await axios.get(`http://localhost:8008/movie/${this._id}`))
    this.movieDetail = payload.data
    console.log(this.movieDetail)
    console.log()

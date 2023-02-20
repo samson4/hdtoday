@@ -10,7 +10,7 @@
     </v-img>
   </router-link>
   <v-card-title>{{ movie.Title }}</v-card-title>
-    <v-card-subtitle>{{ movie.Year }} <span class="dot">.</span> {{ movie.Minutes }} <v-chip class="tag" label small>{{ movie.Tag }}</v-chip></v-card-subtitle>
+    <v-card-subtitle>{{ movie.Year }} <span class="dot">.</span> {{ movie.Duration }} <v-chip class="tag" label small>Movie</v-chip></v-card-subtitle>
   </v-card>
   </v-row>
   <v-spacer></v-spacer>

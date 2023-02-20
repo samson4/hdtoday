@@ -32,7 +32,7 @@ export default defineComponent({
   },
   async mounted(){
     try{
-    const data=await axios.get('http://localhost:8008/movie')
+    const data=await axios.get('http://localhost:8008/movie/movie')
     const movies = await data.data  
     this.movies = movies
     console.log(this.movies)

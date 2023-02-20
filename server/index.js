@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:false}))
 
 app.use("/home",require('./routes/homeRoutes'))
 app.use("/movie",require('./routes/moviesRoutes'))
-app.use("/tv-show",require('./routes/tv_showRoutes'))
+app.use("/tv_show",require('./routes/tv_showRoutes'))
 app.use("/top-imdb",require('./routes/top_imdbRoutes'))
 app.use("/user",require('./routes/userRoutes'))
 
