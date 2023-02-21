@@ -26,13 +26,13 @@
           
         <p>{{ movieDetail.Description }}</p>
         
-        <p>Released:{{ movieDetail.Released }}</p>
-        <p>Genre:{{ movieDetail.Genre }}</p>
-        <p>Casts:{{ movieDetail.Casts }}</p>
+        <p>Released: {{ moment(movieDetail.Released).format('YYYY') }}</p>
+        <p>Genre: {{ movieDetail.Genre }}</p>
+        <p>Casts: {{ movieDetail.Casts }}</p>
         <v-spacer></v-spacer>
-        <p>Duration:{{ movieDetail.Minutes }}</p>
-        <p>Country:{{ movieDetail.Country }}</p>
-        <p>Production:{{ movieDetail.Production }}</p>
+        <p>Duration: {{ movieDetail.Duration }}</p>
+        <p>Country: {{ movieDetail.Country }}</p>
+        <p>Production: {{ movieDetail.Production }}</p>
       </v-div>
     </v-col>
     </v-row>
@@ -116,6 +116,7 @@
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 
 export default {
   name:"movie-detail",
@@ -137,6 +138,9 @@ export default {
   methods:{
     addtoFavorites(){
       alert("Added to favorites")
+    },
+    moment(){
+      return moment()
     }
   }
 }

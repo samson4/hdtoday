@@ -10,7 +10,7 @@
     </v-img>
   </router-link>
   <v-card-title>{{ movie.Title }}</v-card-title>
-    <v-card-subtitle>{{ movie.Year }} <span class="dot">.</span> {{ movie.Duration }} <v-chip class="tag" label small>Movie</v-chip></v-card-subtitle>
+    <v-card-subtitle>{{ moment(movie.Released).format('YYYY')  }} <span class="dot">.</span> {{ movie.Duration }} <v-chip class="tag" label small>Movie</v-chip></v-card-subtitle>
   </v-card>
   </v-row>
   <v-spacer></v-spacer>
@@ -19,7 +19,9 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
+
     props:['movies'],
     components:{
 
@@ -27,6 +29,9 @@ export default {
     methods:{
       hoverPlay(){
         this.hover = !this.hover
+      },
+      moment(){
+        return moment()
       }
     },
     data(){
