@@ -1,14 +1,14 @@
 <template>
   <v-div class="container" style="">
   <v-breadcrumbs>Home{{ previous }}</v-breadcrumbs>
-    <v-img  :src="movieDetail.Poster"><v-card-title color="text--grey"> {{movieDetail.Title}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
+    <v-img cover :src="movieDetail.Poster"><v-card-title> {{movieDetail.Title}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
     
     <br>
   <br>
   <div>
     <v-card
     class="mx-auto"
-    width="900"
+    width="1200"
     border-radius="10"
   >
     <v-card-text>
@@ -27,12 +27,12 @@
         <p>{{ movieDetail.Description }}</p>
         
         <p>Released: {{ moment(movieDetail.Released).format('YYYY') }}</p>
-        <p>Genre: {{ movieDetail.Genre }}</p>
-        <p>Casts: {{ movieDetail.Casts }}</p>
+        <p>Genre: {{ movieDetail.Genre[0] }}</p>
+        <p>Casts: {{ movieDetail.Casts[0] }}</p>
         <v-spacer></v-spacer>
         <p>Duration: {{ movieDetail.Duration }}</p>
-        <p>Country: {{ movieDetail.Country }}</p>
-        <p>Production: {{ movieDetail.Production }}</p>
+        <p>Country: {{ movieDetail.Country[0] }}</p>
+        <p>Production: {{ movieDetail.Production[0] }}</p>
       </v-div>
     </v-col>
     </v-row>
@@ -52,14 +52,14 @@
   </div>
   <br>
   
-  <v-div class="mx-auto">
+  <v-div class="mx-auto" width="1200">
     
     <v-row align="center" justify="space-around">
-      <v-chip small>Watch Black Panther: Wakanda Forever Online Free</v-chip>
-      <v-chip small> Black Panther: Wakanda Forever Online Free</v-chip>
-      <v-chip small>Where to watch Black Panther: Wakanda Forever</v-chip>
-      <v-chip small> Black Panther: Wakanda Forever movie Free online</v-chip>
-      <v-chip small> Black Panther: Wakanda Forever Free online</v-chip>
+      <v-chip small>{{`Watch ${movieDetail.Title} Online Free`}}</v-chip>
+      <v-chip small> {{`${movieDetail.Title} Online Free`}}</v-chip>
+      <v-chip small>{{`Where to watch ${movieDetail.Title}`}}</v-chip>
+      <v-chip small> {{`${movieDetail.Title} movie Free online`}}</v-chip>
+      <v-chip small> {{` ${movieDetail.Title} Free online`}}</v-chip>
     </v-row>
     
   
@@ -68,7 +68,7 @@
   <br>
   <v-card
     class="mx-auto"
-    width="900"
+    width="1200"
     border-radius="10"
   >
     <v-card-text>

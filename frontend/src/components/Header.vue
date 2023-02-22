@@ -2,8 +2,12 @@
   
   <v-toolbar class="toolbar mb-4">
       
-      <v-btn  @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
+      <v-btn class="align-center" @click="toggleSidebar"><i class="fa fa-bars"></i></v-btn>
+      <v-form action="" class="mx-12 align-center">
+        <v-text-field class="search" label="Enter Keywords"><i class="fa fa-search"></i></v-text-field>
+      </v-form>
       <v-spacer></v-spacer>
+      
       <v-div>
         <v-btn v-if="is_loggedin == false" class="right" flat >
           <i  @click="toggleModal" left class="fa fa-user">  
@@ -125,6 +129,10 @@ created(){
     text-decoration: inherit;
     color: inherit;
   
+}
+.search{
+background-color:white;
+color:black
 }
 
 </style>
