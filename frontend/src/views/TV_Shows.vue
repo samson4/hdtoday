@@ -54,7 +54,7 @@ export default {
     const payload = await axios.get('http://localhost:8008/movie/tv_show')
     const tv_show = await payload.data
     this.tv_shows = tv_show
-    console.log(tv_show)
+  
     }catch(error){
       console.log(error)
     }

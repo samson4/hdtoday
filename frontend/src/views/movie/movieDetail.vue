@@ -1,8 +1,8 @@
 <template>
   <v-div class="container" style="">
   <v-breadcrumbs>Home{{ previous }}</v-breadcrumbs>
-    <v-img cover :src="movieDetail.Poster"><v-card-title> {{movieDetail.Title}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
-    
+    <v-img width="100%" height="500" v-show="playVideo==false" @click="play"  cover :src="movieDetail.Poster"><v-card-title> {{movieDetail.Title}}</v-card-title><i  class="fa fa-play-circle text-center"></i></v-img>
+    <iframe v-show="playVideo" width="100%" height="500" src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1"></iframe>
     <br>
   <br>
   <div>
@@ -126,21 +126,25 @@ export default {
       previous:this.$route.path,
       _id:this.$route.params.id,
       movieDetail:{},
+      playVideo:false,
     }
   },
   async created(){
    const payload = (await axios.get(`http://localhost:8008/movie/${this._id}`))
    this.movieDetail = payload.data
    console.log(this.movieDetail)
-   console.log()
+   
 
   },
   methods:{
     addtoFavorites(){
-      alert("Added to favorites")
+      
     },
     moment(){
       return moment()
+    },
+    play(){
+      this.playVideo=true
     }
   }
 }

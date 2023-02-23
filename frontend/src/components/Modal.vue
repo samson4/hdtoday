@@ -106,11 +106,12 @@ export default {
         async onSubmit(e){
             e.preventDefault()
             const loginUserData = await axios.post("http://localhost:8008/user/login",{email:this.loginemail,password:this.loginpassword})
-            console.log(loginUserData.data.name)
             sessionStorage.setItem("Token",loginUserData.data.Token)
+            sessionStorage.setItem("_id",loginUserData.data._id)
             localStorage.setItem("user",loginUserData.data.name)
             this.$emit('logged')
             this.$router.go(0)
+            
         },
        async authenticate(e){
             e.preventDefault()
@@ -125,7 +126,7 @@ export default {
             }
             else{
             const registerUserData = await axios.post("http://localhost:8008/user/",{name:this.name,email:this.email,password1:this.password,password2:this.password2})
-            console.log(registerUserData)
+            
             console.log("registered")
                
             }

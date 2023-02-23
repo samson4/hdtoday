@@ -92,6 +92,7 @@ router.post("/login",async(req,res)=>{
             _id:user.id,
             name:user.userName,
             email:user.emailAddress,
+            favorite:user.favorite,
             Token:token(user._id)
         })
     }else{
@@ -119,12 +120,12 @@ router.put("/profile",authRequired,asyncHandler(async (req,res)=>{
         // if(!req.body){ 
         //     res.json({message:""}) 
         // }
-        const {Name,Email} = req.body
+        const {Name,Email,id} = req.body
         if(!Name||!Email){
             res.status(400)
             throw new Error('Please include all fields')
         }
-        const updatedProfile = await User.findByIdAndUpdate(req.user.id,{userName:Name,emailAddress:Email}).exec()
+        const updatedProfile = await User.findByIdAndUpdate(req.user.id,{userName:Name,emailAddress:Email,favorite:id}).exec()
         if(updatedProfile){
             res.status(200).json(updatedProfile)
         }else{

@@ -90,16 +90,16 @@ methods:{
   },
   logoutMethod(){
     sessionStorage.removeItem('Token')
+    sessionStorage.removeItem('_id')
     localStorage.removeItem('user')
+    this.$route.go(1)
   }
-
 },
 created(){
   const Token = sessionStorage.getItem('Token')
         if(Token){
             this.is_loggedin=true
             this.name = localStorage.getItem("user") 
-            this.$router.go(0)
         }
 }
 

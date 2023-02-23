@@ -35,7 +35,7 @@ export default defineComponent({
     const data=await axios.get('http://localhost:8008/movie/movie')
     const movies = await data.data  
     this.movies = movies
-    console.log(this.movies)
+  
     }catch(error){
       console.log(error)
     }
