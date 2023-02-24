@@ -19,11 +19,11 @@ const userSchema = mongoose.Schema(
             type:String,
             required:true
         },
-        favorite:{
-            type:[mongoose.Schema.Types.ObjectId],
+        favorite:[{
+            type:mongoose.Schema.Types.ObjectId,
             ref:'Movie',
             default:null
-        }
+        }]
     }
 )
 

@@ -86,20 +86,21 @@
   </v-card>
   <v-div>
     <v-card-title class="mx-2"> You May Also Like</v-card-title>
-    <v-container class="card ma-3 pa-3" >
+    <v-container class="card ma-3 pa-3" v-for="related in Related" :key="related._id">
     
     <v-row justify="space-around" >
   
     <v-card  max-height="460"  max-width="256">
      
+      <router-link  :to="{name:'movie-detail' , params:{ id: related._id}}">
+      <v-img  width="250" height="380" :src="related.Poster">
   
-      <v-img  width="250" height="380" src="/DUNE.jpg">
-  
-        <v-chip class="chip ma-2"  label small >HD</v-chip>
+        <v-chip class="chip ma-2"  label small >{{ related.Quality }}</v-chip>
       </v-img>
+    </router-link>
   
    
-      <v-card-title>Dune</v-card-title>
+      <v-card-title>{{ related.Title }}</v-card-title>
       
   
       <v-card-subtitle>SS 1 <span class="dot">.</span> EPs 2 <v-chip class="tag" label small>TV</v-chip></v-card-subtitle>
@@ -123,6 +124,18 @@ export default {
   props:['id'],
   data(){
     return{
+      Related:[{
+        _id:'63f316be45f6adaedb3c5d63',
+        Title:'Dune',
+        Poster:"/poster-1676875454799.jpg",
+        Quality:"HD",
+        Description:"Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence—a commodity capable of unlocking humanity's greatest potential—only those who can conquer their fear will survive.",
+        Released:2013,
+        Genre:"Science Fiction",
+        Casts:"Timothée Chalamet, Rebecca Ferguson, Dave Bautista, Stellan Skarsgård, Charlotte Rampling",
+        Country:"Canada",
+        Production:"Legendary Entertainment"
+      }],
       previous:this.$route.path,
       _id:this.$route.params.id,
       movieDetail:{},

@@ -141,7 +141,7 @@ router.put("/profile",authRequired,asyncHandler(async (req,res)=>{
 // get my favorites
 router.get("/favorite",authRequired,asyncHandler( async(req,res)=>{
     try{
-       const {_id,userName,emailAddress,favorite} = await User.findById(req.user.id)
+       const {_id,userName,emailAddress,favorite} = await User.findById(req.user.id).populate('favorite')
        res.status(200).json({
         id:_id,
         name:userName,

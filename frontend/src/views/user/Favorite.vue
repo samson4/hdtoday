@@ -4,7 +4,7 @@
     
   <v-row justify="space-around" >
 
-  <v-card  max-height="460"  max-width="256" :key="favorite.Title" v-for="favorite in favs">
+  <v-card  max-height="460"  max-width="256" :key="favorite.Title" v-for="favorite in favorites">
    
 
     <v-img  width="250" height="380" :src="favorite.Poster"><i  @click="deleteFavorite(favorite.id)" class="fa fa-window-close"></i>
@@ -33,7 +33,6 @@ data(){
     return{
     breadcrumb:this.$route.name,
     favorites:[],
-    favs:[],
     }
 },
 methods:{
@@ -49,19 +48,9 @@ async created(){
             }
         }
   const payload = await axios.get('http://localhost:8008/user/favorite',config)
+  console.log(payload.data.favorites)
   this.favorites = payload.data.favorites
-  // console.log(this.favorites)
-  
-  for (const favorite in this.favorites){
-    
-    const favPayload = await axios.get(`http://localhost:8008/movie/${this.favorites[favorite]}`)
-    this.favs.push(favPayload.data)
-  }
-  console.log(this.favs)
-  // 
-  // // 
-  // this.favorites= favPayload.data
-  
+
 }
 
     }

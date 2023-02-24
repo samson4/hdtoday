@@ -24,7 +24,7 @@
           <v-list-item-title><a href="/user/profile"><i class="fa fa-user-circle mr-2"></i>Profile </a></v-list-item-title>
           <v-list-item-title><a href="/user/favorite"><i class="fa fa-heart mr-2"></i>My Favorite</a></v-list-item-title>
           <v-divider></v-divider>
-          <v-list-item-title @click="logoutMethod" class="logout"><a flat href=""><i class="fa fa-sign-out-alt mr-2 "></i>Logout </a></v-list-item-title>
+          <v-list-item-title @click="logoutMethod" class="logout"><a flat href="/home"><i class="fa fa-sign-out-alt mr-2 "></i>Logout </a></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -89,10 +89,12 @@ methods:{
   
   },
   logoutMethod(){
+    
     sessionStorage.removeItem('Token')
     sessionStorage.removeItem('_id')
     localStorage.removeItem('user')
-    this.$route.go(1)
+    this.$router.go(-3)
+    
   }
 },
 created(){
